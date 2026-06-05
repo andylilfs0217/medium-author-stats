@@ -2,6 +2,20 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-06-05
+
+### Changed
+
+- Simplified the posted userscript metadata to a single Greasy Fork-focused `// ==UserScript==` block.
+- Removed localized metadata and the OpenUserJS metadata block from `user-script.js` to avoid upload parser ambiguity.
+
+## [0.1.14] - 2026-06-05
+
+### Changed
+
+- Added explicit English localized userscript metadata (`@name:en`, `@description:en`) for Greasy Fork validation.
+- Clarified Greasy Fork posting instructions to distinguish scripts from UserCSS styles.
+
 ## [0.1.13] - 2026-06-05
 
 ### Added

@@ -46,13 +46,15 @@ When posting this on Greasy Fork, choose **Script**, not **Style/UserCSS**. The 
 // ==UserScript==
 // @name         Medium Any Author Stats In-Page
 // @namespace    https://github.com/andylilfs0217/medium-author-stats
-// @version      0.1.13
+// @version      0.1.15
 // @description  Adds an in-page stats button to Medium author profiles and shows author post statistics.
 // @license      MIT
 // ==/UserScript==
 ```
 
-If Greasy Fork links to Stylus/UserCSS docs or says the default name, description, namespace, version, or license is missing, the wrong upload type or the wrong content was used. Do not paste this README or [`greasyfork/DESCRIPTION.md`](./greasyfork/DESCRIPTION.md) into the code field; use the description file only for the listing's additional info.
+If Greasy Fork links to Stylus/UserCSS docs or says the default name, description, namespace, version, or license is missing, the wrong upload type or wrong content was used. Use **Post a new script**, not **Post a new style**, and paste the raw text from [`user-script.js`](./user-script.js), not the GitHub HTML page, this README, or [`greasyfork/DESCRIPTION.md`](./greasyfork/DESCRIPTION.md). Use the description file only for the listing's additional info.
+
+The Stylus/UserCSS docs use `/* ==UserStyle== ... ==/UserStyle== */` for CSS-only styles. This repo is not a UserCSS style; it must keep the `// ==UserScript== ... ==/UserScript==` JavaScript metadata block.
 
 ## How to use
 
