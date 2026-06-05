@@ -1,10 +1,14 @@
 // ==UserScript==
 // @name         Medium Any Author Stats In-Page
-// @namespace    https://github.com/BSalwiczek/medium-any-author-stats
-// @version      0.1.11
+// @namespace    https://github.com/andylilfs0217/medium-author-stats
+// @version      0.1.13
 // @description  Adds an in-page stats button to Medium author profiles and shows author post statistics.
 // @author       andylilfs0217
 // @license      MIT
+// @homepageURL  https://github.com/andylilfs0217/medium-author-stats#readme
+// @supportURL   https://github.com/andylilfs0217/medium-author-stats/issues
+// @contributionURL https://github.com/sponsors/andylilfs0217
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=medium.com
 // @match        https://medium.com/*
 // @match        https://*.medium.com/*
 // @include      /^https:\/\/medium\.com\/.*$/
@@ -12,6 +16,10 @@
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==
+//
+// ==OpenUserJS==
+// @author andylilfs0217
+// ==/OpenUserJS==
 
 (function () {
   "use strict";
@@ -1098,7 +1106,7 @@ Click to open post`;
   function setDebugStatus(message) {
     window.__mediumAuthorStatsStatus = {
       message,
-      version: "0.1.11",
+      version: "0.1.13",
       url: window.location.href,
       at: new Date().toISOString(),
       followButtons: Array.from(document.querySelectorAll("button, [role='button']"))

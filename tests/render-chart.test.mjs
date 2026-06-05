@@ -4,7 +4,7 @@ import test from "node:test";
 import vm from "node:vm";
 
 function loadRenderChart() {
-  const source = fs.readFileSync(new URL("../medium-author-stats.user.js", import.meta.url), "utf8");
+  const source = fs.readFileSync(new URL("../user-script.js", import.meta.url), "utf8");
   const instrumented = source.replace(
     /\n  boot\(\);\n\}\)\(\);\s*$/,
     "\n  window.__mediumAuthorStatsTest = { mapPostsToAuthor, renderChart };\n})();",
@@ -122,10 +122,27 @@ test("mapPostsToAuthor includes Medium repost counts in totals and ratios", () =
   assert.equal(author.posts[0].reposts, 4);
 });
 
-test("userscript version and GraphQL query are bumped for repost statistics", () => {
-  const source = fs.readFileSync(new URL("../medium-author-stats.user.js", import.meta.url), "utf8");
+test("userscript version and GraphQL query are current", () => {
+  const source = fs.readFileSync(new URL("../user-script.js", import.meta.url), "utf8");
 
-  assert.match(source, /@version\s+0\.1\.11/);
-  assert.match(source, /version: "0\.1\.11"/);
+  assert.match(source, /@version\s+0\.1\.13/);
+  assert.match(source, /version: "0\.1\.13"/);
   assert.match(source, /\brepostCount\b/);
+});
+
+test("userscript metadata includes fields required by Greasy Fork", () => {
+  const source = fs.readFileSync(new URL("../user-script.js", import.meta.url), "utf8");
+  const metadata = source.slice(0, source.indexOf("// ==/UserScript==") + "// ==/UserScript==".length);
+
+  assert.match(metadata, /^\/\/ ==UserScript==/);
+  assert.match(metadata, /^\/\/ @name\s+\S/m);
+  assert.match(metadata, /^\/\/ @description\s+\S/m);
+  assert.match(metadata, /^\/\/ @version\s+\S/m);
+  assert.match(metadata, /^\/\/ @namespace\s+\S/m);
+  assert.match(metadata, /^\/\/ @license\s+\S/m);
+  assert.match(metadata, /^\/\/ @homepageURL\s+https:\/\/github\.com\/andylilfs0217\/medium-author-stats#readme$/m);
+  assert.match(metadata, /^\/\/ @supportURL\s+https:\/\/github\.com\/andylilfs0217\/medium-author-stats\/issues$/m);
+  assert.match(metadata, /^\/\/ @contributionURL\s+https:\/\/github\.com\/sponsors\/andylilfs0217$/m);
+  assert.match(metadata, /\/\/ ==\/UserScript==$/);
+  assert.match(source, /\/\/ ==OpenUserJS==\n\/\/ @author andylilfs0217\n\/\/ ==\/OpenUserJS==/);
 });

@@ -1,13 +1,13 @@
 # Medium Author Stats Userscript
 
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/andylilfs0217) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#license) [![Install from GitHub](https://img.shields.io/badge/GitHub-install-181717?logo=github)](https://raw.githubusercontent.com/andylilfs0217/medium-author-stats/main/medium-author-stats.user.js)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/andylilfs0217) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Install from GitHub](https://img.shields.io/badge/GitHub-install-181717?logo=github)](https://raw.githubusercontent.com/andylilfs0217/medium-author-stats/main/user-script.js)
 
 Tampermonkey / Violentmonkey userscript for **Medium** author profile pages. It adds a **Stats** button next to the profile **Follow** button and opens an in-page modal with author-level post statistics, engagement ratios, a trend chart, and top posts.
 
 | | |
 | --- | --- |
 | **Repository** | [andylilfs0217/medium-author-stats](https://github.com/andylilfs0217/medium-author-stats) |
-| **Install (users)** | [Raw userscript](https://raw.githubusercontent.com/andylilfs0217/medium-author-stats/main/medium-author-stats.user.js) |
+| **Install (users)** | [Raw userscript](https://raw.githubusercontent.com/andylilfs0217/medium-author-stats/main/user-script.js) |
 | **Issues** | [GitHub Issues](https://github.com/andylilfs0217/medium-author-stats/issues) |
 
 **Works on:** `https://medium.com/*` and `https://*.medium.com/*`
@@ -29,14 +29,30 @@ Tampermonkey / Violentmonkey userscript for **Medium** author profile pages. It 
 2. Use this **raw** script URL:
 
    ```
-   https://raw.githubusercontent.com/andylilfs0217/medium-author-stats/main/medium-author-stats.user.js
+   https://raw.githubusercontent.com/andylilfs0217/medium-author-stats/main/user-script.js
    ```
 
 3. In Tampermonkey: **Dashboard -> Utilities -> Install from URL** (wording may vary), paste the URL, and confirm.
 
 ### Install by pasting the file
 
-In your userscript manager, create a new script, paste the contents of [`medium-author-stats.user.js`](./medium-author-stats.user.js), and save.
+In your userscript manager, create a new script, paste the contents of [`user-script.js`](./user-script.js), and save.
+
+### Greasy Fork publishing note
+
+When posting this on Greasy Fork, choose **Script**, not **Style/UserCSS**. The code field must contain only [`user-script.js`](./user-script.js), starting with:
+
+```js
+// ==UserScript==
+// @name         Medium Any Author Stats In-Page
+// @namespace    https://github.com/andylilfs0217/medium-author-stats
+// @version      0.1.13
+// @description  Adds an in-page stats button to Medium author profiles and shows author post statistics.
+// @license      MIT
+// ==/UserScript==
+```
+
+If Greasy Fork links to Stylus/UserCSS docs or says the default name, description, namespace, version, or license is missing, the wrong upload type or the wrong content was used. Do not paste this README or [`greasyfork/DESCRIPTION.md`](./greasyfork/DESCRIPTION.md) into the code field; use the description file only for the listing's additional info.
 
 ## How to use
 
@@ -75,14 +91,17 @@ You are responsible for following applicable law and Medium's terms. This tool i
 
 ## License
 
-Distributed under the MIT License.
+Distributed under the MIT License - see [`LICENSE`](./LICENSE).
 
 ---
 
 <details>
 <summary><strong>Development</strong> (maintainers)</summary>
 
-- Main script: [`medium-author-stats.user.js`](./medium-author-stats.user.js).
+- Main script: [`user-script.js`](./user-script.js).
+- Greasy Fork listing copy: [`greasyfork/DESCRIPTION.md`](./greasyfork/DESCRIPTION.md).
+- Greasy Fork sync notes: [`greasyfork/README.md`](./greasyfork/README.md).
+- OpenUserJS sync notes: [`openuserjs/README.md`](./openuserjs/README.md).
 - Focused tests: [`tests/render-chart.test.mjs`](./tests/render-chart.test.mjs).
 - Run tests with:
 
@@ -93,16 +112,17 @@ Distributed under the MIT License.
 - Check userscript syntax with:
 
   ```
-  node --check medium-author-stats.user.js
+  node --check user-script.js
   ```
 
 **Release checklist**
 
-1. Bump `// @version` in [`medium-author-stats.user.js`](./medium-author-stats.user.js).
-2. Update this README if install, usage, or visible metrics changed.
-3. Run `node --test tests/render-chart.test.mjs`.
-4. Run `node --check medium-author-stats.user.js`.
-5. Commit, push, and tag `vX.Y.Z` on GitHub if you use releases.
+1. Update [`CHANGELOG.md`](./CHANGELOG.md).
+2. Bump `// @version` in [`user-script.js`](./user-script.js).
+3. Update this README and [`greasyfork/DESCRIPTION.md`](./greasyfork/DESCRIPTION.md) if install, usage, or visible metrics changed.
+4. Run `node --test tests/render-chart.test.mjs`.
+5. Run `node --check user-script.js`.
+6. Commit, push, and tag `vX.Y.Z` on GitHub if you use releases.
 
 Do not change `// @namespace` or `// @name` unless you intend a new script identity in userscript managers.
 
